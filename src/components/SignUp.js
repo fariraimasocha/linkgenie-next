@@ -48,6 +48,15 @@ export default function SignUp() {
         }
     };
 
+    const handleGoogleSignIn = async () => {
+        setLoading(true);
+        const result = await signIn("google", { redirect: true });
+        if (result?.error) {
+            alert("Google sign-in failed");
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900 px-4 sm:px-6 lg:px-8">
             <section className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 bg-gray-800 rounded-lg shadow-md">
@@ -117,6 +126,16 @@ export default function SignUp() {
                             )}
                         </button>
                     </div>
+                    <div className="mb-4">
+                        <button
+                            onClick={handleGoogleSignIn}
+                            className="w-full px-4 py-3 mt-5 sm:py-4 text-base sm:text-lg text-white bg-red-500 rounded-lg hover:bg-red-400"
+                            disabled={loading}
+                        >
+                            {loading ? 'Loading...' : 'Sign Up with Google'}
+                        </button>
+                    </div>
+
                 </form>
                 <p className="mt-6 text-center text-sm sm:text-base text-gray-400">
                     Already have an account?{" "}

@@ -31,6 +31,15 @@ export default function SignIn() {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    const result = await signIn("google", { redirect: true });
+    if (result?.error) {
+      toast.error("Google sign-in failed.");
+      console.error("Error signing in with Google:", result.error);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 px-4 sm:px-6 lg:px-8">
       <section className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 bg-gray-800 rounded-lg shadow-md">
@@ -39,7 +48,6 @@ export default function SignIn() {
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-5">
-
             <input
               type="email"
               name="email"
@@ -60,6 +68,7 @@ export default function SignIn() {
               className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base text-white bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
+
           <div>
             <button
               type="submit"
@@ -80,6 +89,17 @@ export default function SignIn() {
             </button>
           </div>
         </form>
+
+        <div className="my-6">
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full px-4 py-3 sm:py-4 text-base sm:text-lg text-white bg-red-500 rounded-lg hover:bg-red-400"
+            disabled={loading}
+          >
+            Sign in with Google
+          </button>
+        </div>
+
         <p className="mt-6 text-center text-sm sm:text-base text-gray-400">
           Don&apos;t have an account?{" "}
           <Link href="/auth/signup" className="text-blue-500 hover:underline">
@@ -88,7 +108,5 @@ export default function SignIn() {
         </p>
       </section>
     </div>
-
-
   );
 }
