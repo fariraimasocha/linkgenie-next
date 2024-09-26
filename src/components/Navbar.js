@@ -37,7 +37,6 @@ function Navbar() {
             }
         }
     };
-
     const handleSignOut = async () => {
         setLoading(true);
         await signOut({ callbackUrl: '/' });
