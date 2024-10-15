@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon/favicon.png" type="image/x-icon" />
         <meta property="og:title" content="LinkGenie" />
         <meta property="og:description" content="Effortlessly create engaging LinkedIn posts that showcase your unique style. With just one single click, our AI-powered tool generates content tailored to your voice, helping you stand out and make a lasting impression." />
-        <meta property="og:image" content="https://www.linkgenie.one/landing/genie.png" />
+        <meta property="og:image" content="https://www.linkgenie.one/landing/genie.png" width="1200" height="630" />
       </head>
       <body className='bg-custom-radial'>
         <AuthProvider>
